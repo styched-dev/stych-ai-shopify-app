@@ -1,0 +1,28 @@
+# fly.toml app configuration file generated for stych-ai on 2024-03-14T11:42:06+05:30
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'stych-ai'
+primary_region = 'sin'
+
+[build]
+
+[http_service]
+  internal_port = 8081
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[env]
+  PORT = "8081"
+  SHOPIFY_APP_URL = "https://stych-ai.fly.dev"
+  SHOPIFY_API_KEY = "2cf75b6c0419fc82bc5864ce144c8d32"
+  SCOPES = "write_products"
